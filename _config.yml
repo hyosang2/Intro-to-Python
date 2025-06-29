@@ -1,5 +1,9 @@
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme
-title: My GitHub Pages Site
-description: Just a test
+
+title: Python Learning Resources
+description: Comprehensive guides for learning Python programming from basics to object-oriented programming
+
+# Cayman theme configuration
+show_downloads: false

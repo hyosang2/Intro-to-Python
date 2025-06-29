@@ -1,5 +1,3 @@
-# Intro to Python 🐍
-
 Welcome to the comprehensive Python learning resource repository! This collection of guides will take you from Python basics to advanced object-oriented programming concepts.
 
 ## 📚 Learning Guides
