@@ -46,6 +46,6 @@ Comments are essential for:
 
 ## Navigation
 
-⬅️ **[Back to Table of Contents](table-of-contents.md)**
+⬅️ **[Back to Table of Contents](table-of-contents)**
 
-➡️ **[Next: Chapter 2 - Variables and Data Types](chapter-02.md)**
+➡️ **[Next: Chapter 2 - Variables and Data Types](chapter-02)**

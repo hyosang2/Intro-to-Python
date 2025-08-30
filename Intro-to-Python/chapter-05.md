@@ -606,8 +606,8 @@ Like mathematical sets, there are built-in set methods that do operations such a
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 4 - Loops](chapter-04.md)**
+⬅️ **[Previous: Chapter 4 - Loops](chapter-04)**
 
-⬅️ **[Back to Table of Contents](table-of-contents.md)**
+⬅️ **[Back to Table of Contents](table-of-contents)**
 
-➡️ **[Next: Chapter 6 - Functions](chapter-06.md)**
+➡️ **[Next: Chapter 6 - Functions](chapter-06)**

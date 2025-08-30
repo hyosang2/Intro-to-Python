@@ -144,8 +144,8 @@ Notice the `:` at the end of if-statements, else syntax, while and for-loop head
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 6 - Functions](chapter-06.md)**
+⬅️ **[Previous: Chapter 6 - Functions](chapter-06)**
 
-⬅️ **[Back to Table of Contents](table-of-contents.md)**
+⬅️ **[Back to Table of Contents](table-of-contents)**
 
 🎉 **You've completed the Intro to Python Guide!**

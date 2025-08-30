@@ -9,25 +9,25 @@ Welcome to the comprehensive Python learning guide! This interactive table of co
 
 ## 📖 Chapters
 
-### [Chapter 1: Hello World](chapter-01.md)
+### [Chapter 1: Hello World](chapter-01)
 Learn the basics of Python programming with print statements and comments
 
-### [Chapter 2: Variables and Data Types](chapter-02.md)  
+### [Chapter 2: Variables and Data Types](chapter-02)  
 Understand Python variables, data types (strings, integers, floats, booleans), and operators
 
-### [Chapter 3: If/Elif/Else Statements](chapter-03.md)
+### [Chapter 3: If/Elif/Else Statements](chapter-03)
 Conditional statements, decision making, logical operators, and nested conditions
 
-### [Chapter 4: Loops](chapter-04.md)
+### [Chapter 4: Loops](chapter-04)
 For loops, while loops, iteration, range function, break and continue
 
-### [Chapter 5: Collections](chapter-05.md)
+### [Chapter 5: Collections](chapter-05)
 Lists, tuples, dictionaries, sets, and working with collections
 
-### [Chapter 6: Functions](chapter-06.md)
+### [Chapter 6: Functions](chapter-06)
 Creating and using functions, parameters, return values, and void functions
 
-### [Chapter 7: Miscellaneous Topics](chapter-07.md)
+### [Chapter 7: Miscellaneous Topics](chapter-07)
 Built-in functions, libraries (random, math, time), and common beginner mistakes
 
 ---
