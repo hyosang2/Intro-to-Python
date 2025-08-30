@@ -2,8 +2,11 @@ Welcome to the comprehensive Python learning resource repository! This collectio
 
 ## 📚 Learning Guides
 
-### 🌟 [Intro to Python](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/hyosang2/Intro-to-Python/main/Intro_to_Python_Review_Guide.pdf&embedded=true)
+### 🌟 Intro to Python
 A comprehensive introduction to Python programming fundamentals, covering variables, data types, control structures, functions, and essential concepts for beginners.
+
+[![📖 Table of Contents](https://img.shields.io/badge/📖-Table%20of%20Contents-blue?style=for-the-badge)](Intro-to-Python/table-of-contents.md)
+[![📄 Download PDF](https://img.shields.io/badge/📄-Download%20PDF-red?style=for-the-badge)](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/hyosang2/Intro-to-Python/main/Intro_to_Python_Review_Guide.pdf&embedded=true)
 
 ### 📖 [Intro to Python - Double Column](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/hyosang2/Intro-to-Python/main/Intro_to_Python_Review_Guide_Double_Col.pdf&embedded=true)
 The same comprehensive Python introduction in a convenient double-column format for easier reading and reference.
