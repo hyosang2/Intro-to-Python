@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 6 - Functions
+---
+
 # Chapter 6: Functions
 
 If you've studied about algebra before, you may be familiar with **functions**. They allow assessing the results for every possible inputs (parameters), making them reusable tools for repeated operations.

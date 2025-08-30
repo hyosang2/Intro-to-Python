@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 4 - Loops
+---
+
 # Chapter 4: Loops
 
 Sometimes we want certain codes to run multiple times. Perhaps each cycle differs a bit, but you notice a pattern inside of it. In this case, we use **loops**. There are two ways to use loops.

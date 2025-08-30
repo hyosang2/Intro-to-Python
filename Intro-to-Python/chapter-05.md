@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 5 - Collections
+---
+
 # Chapter 5: Collections
 
 In Python, a series of data can be organized in a **collection**. There are four commonly-used collections: strings, lists, tuples, and dictionaries.

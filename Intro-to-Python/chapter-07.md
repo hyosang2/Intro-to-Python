@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 7 - More Tips for Python
+---
+
 # Chapter 7: More Tips for Python
 
 ## More Built-in Functions

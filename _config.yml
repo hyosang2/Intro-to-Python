@@ -7,3 +7,26 @@ description: Comprehensive guides for learning Python programming from basics to
 
 # Cayman theme configuration
 show_downloads: false
+
+# Enable markdown processing for all files
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Include markdown files in processing
+include:
+  - "Intro-to-Python/*.md"
+
+# Set defaults for all markdown files to use the default layout
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "Intro-to-Python"
+      type: "pages"
+    values:
+      layout: "default"

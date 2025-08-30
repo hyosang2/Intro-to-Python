@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 1 - Hello World
+---
+
 # Chapter 1: Hello World
 
 Welcome to your first Python chapter! This chapter covers the fundamental building blocks of Python programming.

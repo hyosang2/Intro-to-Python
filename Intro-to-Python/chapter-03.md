@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 3 - If-Else Statements
+---
+
 # Chapter 3: If-Else Statements
 
 Most logics in Python consist of **if-statements**. To create an if-statement, we do the following steps:

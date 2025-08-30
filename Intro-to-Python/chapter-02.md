@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chapter 2 - Variables and Data Types
+---
+
 # Chapter 2: Variables and Data Types
 
 A **variable** in Python is a data storage and tracking asset.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: Table of Contents - Intro to Python
+---
+
 # Intro to Python - Table of Contents
 
 Welcome to the comprehensive Python learning guide! This interactive table of contents will help you navigate through each chapter of the Intro to Python guide.
