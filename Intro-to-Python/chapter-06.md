@@ -199,8 +199,8 @@ None
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 5 - Collections](chapter-05)**
+⬅️ **[Previous: Chapter 5 - Collections](chapter-05.md)**
 
-⬅️ **[Back to Table of Contents](table-of-contents)**
+⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 7 - Miscellaneous Topics](chapter-07)**
+➡️ **[Next: Chapter 7 - Miscellaneous Topics](chapter-07.md)**

@@ -1,9 +1,16 @@
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme
+- jekyll-relative-links
 
 title: Python Learning Resources
 description: Comprehensive guides for learning Python programming from basics to object-oriented programming
+baseurl: /Intro-to-Python
+
+# Enable relative links plugin
+relative_links:
+  enabled: true
+  collections: true
 
 # Cayman theme configuration
 show_downloads: false

@@ -131,8 +131,8 @@ Multiple layers of if-statements are allowed.
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 2 - Variables and Data Types](chapter-02)**
+⬅️ **[Previous: Chapter 2 - Variables and Data Types](chapter-02.md)**
 
-⬅️ **[Back to Table of Contents](table-of-contents)**
+⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 4 - Loops](chapter-04)**
+➡️ **[Next: Chapter 4 - Loops](chapter-04.md)**

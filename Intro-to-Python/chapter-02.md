@@ -94,8 +94,8 @@ If any of the *binary* operations assigns the output back to the same variable, 
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 1 - Hello World](chapter-01)**
+⬅️ **[Previous: Chapter 1 - Hello World](chapter-01.md)**
 
-⬅️ **[Back to Table of Contents](table-of-contents)**
+⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 3 - If/Elif/Else Statements](chapter-03)**
+➡️ **[Next: Chapter 3 - If/Elif/Else Statements](chapter-03.md)**

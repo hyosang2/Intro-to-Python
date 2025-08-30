@@ -141,8 +141,8 @@ The first for-loop will print `i` up to 4 because the loop exits when `i` reache
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 3 - If/Elif/Else Statements](chapter-03)**
+⬅️ **[Previous: Chapter 3 - If/Elif/Else Statements](chapter-03.md)**
 
-⬅️ **[Back to Table of Contents](table-of-contents)**
+⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 5 - Collections](chapter-05)**
+➡️ **[Next: Chapter 5 - Collections](chapter-05.md)**
