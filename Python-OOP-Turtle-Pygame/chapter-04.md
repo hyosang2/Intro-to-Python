@@ -68,18 +68,127 @@ The Blue Bike is moving at 15 mph!
 The Blue Bike goes RING RING!
 ```
 
-## Other OOP Principles
+## Polymorphism
 
-### Polymorphism
-Polymorphism allows objects of different classes to be treated as objects of a common base class, while still calling their specific methods.
+**Polymorphism** means "many forms". It allows objects of different classes to be treated as objects of a common base class. In Python, polymorphism is achieved when different classes have methods with the same name but different implementations.
 
-### Encapsulation
-Encapsulation is the bundling of data and methods that work on that data within one unit (class), and restricting access to some of the object's components.
+```python
+class Dog:
+    def make_sound(self):
+        return "Woof!"
 
-### Abstraction
-Abstraction involves hiding complex implementation details while showing only the essential features of an object.
+class Cat:
+    def make_sound(self):
+        return "Meow!"
 
-These principles work together to make code more organized, reusable, and maintainable in object-oriented programming.
+class Duck:
+    def make_sound(self):
+        return "Quack!"
+
+# Create different animals
+animals = [Dog(), Cat(), Duck()]
+
+# Same method name, different sounds
+for animal in animals:
+    print(animal.make_sound())
+```
+
+**Output:**
+```
+Woof!
+Meow!
+Quack!
+```
+
+Here, each animal class has a `make_sound()` method, but each implements it differently. The same method name produces different behaviors based on the object type. This demonstrates the power of treating different objects uniformly, similar to how we can store objects of different classes in lists as shown in Chapter 3.
+
+## Abstraction
+
+**Abstraction** hides complex implementation details and shows only the essential features. In Python, abstraction is achieved through abstract classes and methods using the `abc` module. However, for beginners, it's enough to understand that abstraction means **hiding complexity** and providing simple interfaces.
+
+```python
+# Simple abstraction example - user doesn't need to know how microwave works inside
+class Microwave:
+    def __init__(self):
+        self.power = 0
+        self.time = 0
+    
+    def heat_food(self, food, minutes):
+        self._set_power(800)     # Hidden complexity
+        self._set_timer(minutes) # Hidden complexity
+        self._start_heating()    # Hidden complexity
+        print(f"Your {food} is ready!")
+    
+    def _set_power(self, watts):  # Private method (hidden)
+        self.power = watts
+        print(f"Power set to {watts} watts")
+    
+    def _set_timer(self, minutes):  # Private method (hidden)
+        self.time = minutes
+        print(f"Timer set to {minutes} minutes")
+    
+    def _start_heating(self):  # Private method (hidden)
+        print("Heating started...")
+
+# User only needs to know this simple interface
+microwave = Microwave()
+microwave.heat_food("pizza", 2)
+```
+
+**Output:**
+```
+Power set to 800 watts
+Timer set to 2 minutes
+Heating started...
+Your pizza is ready!
+```
+
+## Encapsulation
+
+**Encapsulation** bundles data and methods into a single unit (class) and restricts access to some components. In Python, encapsulation is achieved using **private attributes** and **methods** by prefixing them with underscore(s). Note that while private attributes and methods are intended to be hidden from the user, it is not a strict rule and can be bypassed in Python. This concept will become important when we create graphics programs with Turtle (Chapter 6) and games with Pygame (Chapter 7), where we often want to hide complex implementation details from the user.
+
+```python
+class PiggyBank:
+    def __init__(self):
+        self._coins = 0         # Protected attribute
+        self.__secret_code = 1234  # Private attribute
+    
+    def add_coin(self):
+        self._coins += 1
+        print(f"Added a coin! Total coins: {self._coins}")
+    
+    def get_coins(self):
+        return self._coins
+    
+    def open_bank(self, code):
+        if code == self.__secret_code:
+            print(f"Bank opened! You have {self._coins} coins!")
+            return self._coins
+        else:
+            print("Wrong code! Bank stays locked!")
+            return 0
+    
+    def __count_money(self):  # Private method
+        return self._coins * 25  # Each coin worth 25 cents
+
+bank = PiggyBank()
+bank.add_coin()
+bank.add_coin()
+bank.add_coin()
+print(f"Current coins: {bank.get_coins()}")
+bank.open_bank(1234)  # Correct code
+bank.open_bank(9999)  # Wrong code
+```
+
+**Output:**
+```
+Added a coin! Total coins: 1
+Added a coin! Total coins: 2
+Added a coin! Total coins: 3
+Current coins: 3
+Bank opened! You have 3 coins!
+Wrong code! Bank stays locked!
+```
 
 ---
 
