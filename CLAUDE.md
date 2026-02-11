@@ -37,23 +37,25 @@ This repository contains converted markdown versions of comprehensive Python lea
 
 ### Intro to Python Guide (`Intro-to-Python/`)
 - `table-of-contents.md` - Interactive table of contents
-- `chapter-01.md` - Hello World (Print Statements, Comments)
-- `chapter-02.md` - Variables and Data Types (Data types, Operators)
-- `chapter-03.md` - If/Elif/Else Statements (Conditions, Logical operators)
-- `chapter-04.md` - Loops (While/for loops, range(), break/continue)
-- `chapter-05.md` - Collections (Strings, Lists, Tuples, Dictionaries, Sets)
-- `chapter-06.md` - Functions (Function structure, Return statements)
-- `chapter-07.md` - Miscellaneous Topics (Built-in functions, Libraries)
+- `chapter-01.md` - Hello World (Getting Started, Print Statements, Comments, Input)
+- `chapter-02.md` - Variables and Data Types (Data types, Type Conversion, Operators)
+- `chapter-03.md` - If/Elif/Else Statements (Comparison operators, Logical operators, Nested conditions)
+- `chapter-04.md` - Loops (While/for loops, range(), enumerate(), break/continue, Accumulator pattern)
+- `chapter-05.md` - Strings (Indexing, Slicing, Traversal, F-strings, String methods)
+- `chapter-06.md` - Lists (Indexing, Slicing, Traversal, 2D Lists, List methods)
+- `chapter-07.md` - Tuples, Dictionaries, and Sets (Tuples, Dict key-value pairs, Sets)
+- `chapter-08.md` - Functions (Parameters/Arguments, Return values, Default values, Scope)
+- `chapter-09.md` - Useful Built-in Functions and Libraries (abs, max, min, sum, sorted; random, math, time)
+- `chapter-10.md` - Common Mistakes and Next Steps (Common errors, CodingBat, Next guide)
 
 ### Python OOP Guide (`Python-OOP-Turtle-Pygame/`)
 - `table-of-contents.md` - Interactive table of contents
-- `chapter-01.md` - OOP Introduction
-- `chapter-02.md` - Classes (Class variables, __init__ method, Instance methods)
-- `chapter-03.md` - Objects (Instantiation, Objects as variables)
-- `chapter-04.md` - OOP Principles (Inheritance, Polymorphism, Encapsulation)
-- `chapter-05.md` - Import and Modules (Placeholder)
-- `chapter-06.md` - Turtle Graphics (Placeholder)
-- `chapter-07.md` - Pygame Development (Placeholder)
+- `chapter-01.md` - Introduction to OOP (Why OOP, cookie cutter analogy, first class)
+- `chapter-02.md` - Classes and Objects (__init__, instance/class variables, methods, __str__, objects as variables)
+- `chapter-03.md` - OOP Principles (Inheritance, Method overriding, Polymorphism, Encapsulation, Abstraction)
+- `chapter-04.md` - Importing Your Own Code (Import methods, multi-file OOP, documentation)
+- `chapter-05.md` - Turtle Graphics (Shapes, colors, text, keyboard input, OOP with Turtle)
+- `chapter-06.md` - Pygame Development (Sprites, game loops, collision detection, complete mini game)
 
 ## Updating Guides
 

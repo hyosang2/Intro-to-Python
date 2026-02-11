@@ -1,540 +1,314 @@
 ---
 layout: default
-title: Chapter 6 - Turtle Graphics
+title: Chapter 6 - Pygame Development
 ---
 
-# Chapter 6: Turtle Basics
+# Chapter 6: Pygame Development
 
-**Turtle** is a fun Python library that lets you draw pictures and create graphics using simple commands. It's like having a digital pen that you can control with code! The turtle starts in the center of the screen and follows your commands to draw lines, shapes, and colorful patterns. As mentioned in Chapter 5, Turtle comes built-in with Python through the import system.
+Now that you've created drawings with Turtle, you're ready for the next level: game development! **Pygame** is a Python library for creating games with moving objects, sound effects, and animations. It uses OOP extensively, making it perfect for applying the concepts from Chapters 2–3.
 
-Turtle comes built-in with Python, so you don't need to install anything extra. It's perfect for learning programming because you can see your code come to life as drawings on the screen. This visual feedback makes it an excellent bridge between the object-oriented concepts you learned in Chapters 2 through 4 and practical programming applications.
+Before using Pygame, install it with: `pip install pygame`
 
-## Basic Turtle Commands
+## The Game Loop
 
-Let's start with the most important turtle commands. Think of the turtle as a little robot that can move around and draw:
-
-```python
-import turtle
-
-# Create a turtle and a screen
-my_turtle = turtle.Turtle()
-screen = turtle.Screen()
-
-# Basic movement commands
-my_turtle.forward(100)    # Move forward 100 steps
-my_turtle.right(90)       # Turn right 90 degrees
-my_turtle.forward(50)     # Move forward 50 steps
-my_turtle.left(45)        # Turn left 45 degrees
-my_turtle.backward(75)    # Move backward 75 steps
-
-# Keep the window open until clicked
-screen.exitonclick()
-```
-
-This code creates a simple path that the turtle draws. When you run it, you'll see a window open with lines showing where the turtle moved!
-
-## Drawing Shapes
-
-One of the most fun things about turtle is drawing shapes. Let's create some basic shapes:
+Every Pygame game follows the same core structure — a **game loop** that runs continuously, handling input, updating game state, and drawing to the screen:
 
 ```python
-import turtle
+import pygame
 
-# Create turtle
-artist = turtle.Turtle()
-screen = turtle.Screen()
+# Initialize Pygame
+pygame.init()
 
-# Draw a square
-for i in range(4):
-    artist.forward(100)
-    artist.right(90)
+# Set up the display
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("My First Game")
+clock = pygame.time.Clock()
 
-# Move to a new position without drawing
-artist.penup()           # Lift the pen
-artist.goto(150, 0)      # Move to position (150, 0)
-artist.pendown()         # Put the pen down
+# Game loop
+running = True
+while running:
+    # 1. Handle events (input, window close)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
-# Draw a triangle
-for i in range(3):
-    artist.forward(80)
-    artist.right(120)
+    # 2. Update game state
+    # (move objects, check collisions, etc.)
 
-screen.exitonclick()
+    # 3. Draw everything
+    screen.fill((0, 0, 50))       # Dark blue background
+    pygame.display.flip()          # Show the new frame
+    clock.tick(60)                 # 60 frames per second
+
+pygame.quit()
 ```
 
-Here we use loops to draw shapes efficiently. The square uses 4 sides with 90-degree turns, and the triangle uses 3 sides with 120-degree turns.
+This loop runs roughly 60 times per second, creating the illusion of smooth movement. Pygame uses the same **RGB color system** as Turtle (Chapter 5) — for example, `(255, 0, 0)` is red and `(0, 0, 0)` is black.
 
-## Colors and Pen Control
+## Sprites
 
-Let's make our drawings more colorful and interesting:
+A **sprite** is a game object (a character, enemy, bullet, etc.) represented by an image or shape that can move around the screen. In Pygame, sprites are classes that inherit from `pygame.sprite.Sprite`, demonstrating **inheritance** from Chapter 3:
 
 ```python
-import turtle
+import pygame
 
-# Create turtle
-painter = turtle.Turtle()
-screen = turtle.Screen()
-screen.bgcolor("lightblue")  # Set background color
-
-# Set turtle properties
-painter.color("red")         # Set pen color
-painter.pensize(5)           # Make lines thicker
-painter.speed(3)             # Set drawing speed (1-10)
-
-# Draw a colorful flower
-for i in range(6):
-    painter.circle(50)       # Draw a circle with radius 50
-    painter.right(60)        # Turn to create petal pattern
-
-# Change color and draw the stem
-painter.color("green")
-painter.pensize(8)
-painter.right(90)
-painter.forward(150)
-
-screen.exitonclick()
-```
-
-**Output:**
-```
-# This creates a beautiful flower drawing with:
-# - Light blue background
-# - Red flower petals (6 circles)
-# - Green stem
-# - Thick lines for better visibility
-```
-
-### Understanding Colors
-
-In Python graphics, there are two main ways to specify colors:
-
-**Color Names**: Python knows many color names that you can use as strings. These are easy to remember and use:
-
-```python
-# Using color names (easy to remember!)
-turtle.color("red")
-turtle.color("blue")
-turtle.color("green")
-turtle.color("purple")
-turtle.color("orange")
-turtle.color("pink")
-turtle.color("yellow")
-turtle.color("lightblue")
-turtle.color("darkgreen")
-```
-
-**RGB Colors**: RGB stands for Red, Green, Blue. Every color on your computer screen is made by mixing these three colors. You specify how much of each color to use with numbers from 0 to 255:
-
-```python
-import turtle
-
-# Set up screen to use RGB mode
-screen = turtle.Screen()
-screen.colormode(255)  # Tell turtle to use 0-255 for colors
-
-artist = turtle.Turtle()
-
-# RGB colors: (Red, Green, Blue)
-artist.color((255, 0, 0))    # Pure red
-artist.forward(50)
-
-artist.color((0, 255, 0))    # Pure green  
-artist.forward(50)
-
-artist.color((0, 0, 255))    # Pure blue
-artist.forward(50)
-
-artist.color((255, 255, 0))  # Red + Green = Yellow
-artist.forward(50)
-
-artist.color((255, 0, 255))  # Red + Blue = Magenta
-artist.forward(50)
-
-artist.color((128, 64, 200)) # Custom purple color
-artist.forward(50)
-
-screen.exitonclick()
-```
-
-**Output:**
-```
-# This creates a line with 6 different colored segments:
-# - Pure red
-# - Pure green  
-# - Pure blue
-# - Yellow (red + green)
-# - Magenta (red + blue)
-# - Custom purple
-```
-
-Understanding RGB colors is important because more advanced graphics libraries like Pygame (which we'll explore in Chapter 7) use the same system! In RGB:
-- `(0, 0, 0)` = Black (no colors)
-- `(255, 255, 255)` = White (all colors at maximum)
-- `(255, 0, 0)` = Red
-- `(0, 255, 0)` = Green
-- `(0, 0, 255)` = Blue
-
-## Turtle and Object-Oriented Programming
-
-Here's where turtle connects to what we've learned about OOP in Chapters 2 through 4! Each turtle is actually an object with its own properties and methods, demonstrating the concepts of classes and objects in action:
-
-```python
-import turtle
-
-class DrawingTurtle:
-    def __init__(self, name, color, size):
-        self.name = name
-        self.turtle = turtle.Turtle()
-        self.turtle.color(color)
-        self.turtle.pensize(size)
-        self.turtle.speed(5)
-        print(f"Created turtle named {self.name} with {color} color!")
-    
-    def draw_square(self, side_length):
-        print(f"{self.name} is drawing a square!")
-        for i in range(4):
-            self.turtle.forward(side_length)
-            self.turtle.right(90)
-    
-    def draw_circle(self, radius):
-        print(f"{self.name} is drawing a circle!")
-        self.turtle.circle(radius)
-    
-    def move_to(self, x, y):
-        self.turtle.penup()
-        self.turtle.goto(x, y)
-        self.turtle.pendown()
-
-# Create turtle objects
-artist1 = DrawingTurtle("Pablo", "blue", 3)
-artist2 = DrawingTurtle("Penny", "purple", 5)
-
-# Set up screen
-screen = turtle.Screen()
-screen.setup(800, 600)
-
-# Use our turtle objects
-artist1.draw_square(80)
-artist1.move_to(200, 100)
-artist1.draw_circle(40)
-
-artist2.move_to(-200, -100)
-artist2.draw_square(60)
-
-screen.exitonclick()
-```
-
-**Output:**
-```
-Created turtle named Pablo with blue color!
-Created turtle named Penny with purple color!
-Pablo is drawing a square!
-Pablo is drawing a circle!
-Penny is drawing a square!
-```
-
-## Interactive Turtle Programs
-
-We can make turtle respond to keyboard input, creating interactive drawings:
-
-```python
-import turtle
-
-class ControllableTurtle:
+class Spaceship(pygame.sprite.Sprite):
     def __init__(self):
-        self.turtle = turtle.Turtle()
-        self.turtle.color("orange")
-        self.turtle.pensize(3)
-        self.turtle.speed(6)
-        
-        # Set up the screen
-        self.screen = turtle.Screen()
-        self.screen.setup(600, 600)
-        self.screen.title("Control the Turtle with Arrow Keys!")
-        
-        # Bind keys to methods
-        self.screen.onkey(self.move_up, "Up")
-        self.screen.onkey(self.move_down, "Down")
-        self.screen.onkey(self.move_left, "Left")
-        self.screen.onkey(self.move_right, "Right")
-        self.screen.onkey(self.change_color, "space")
-        
-        # Listen for key presses
-        self.screen.listen()
-        
-        self.colors = ["red", "blue", "green", "purple", "orange", "yellow"]
-        self.color_index = 0
-    
-    def move_up(self):
-        self.turtle.setheading(90)   # Point up
-        self.turtle.forward(20)
-    
-    def move_down(self):
-        self.turtle.setheading(270)  # Point down
-        self.turtle.forward(20)
-    
-    def move_left(self):
-        self.turtle.setheading(180)  # Point left
-        self.turtle.forward(20)
-    
-    def move_right(self):
-        self.turtle.setheading(0)    # Point right
-        self.turtle.forward(20)
-    
-    def change_color(self):
-        self.color_index = (self.color_index + 1) % len(self.colors)
-        self.turtle.color(self.colors[self.color_index])
-        print(f"Color changed to {self.colors[self.color_index]}!")
+        super().__init__()
+        self.image = pygame.Surface((40, 30))
+        self.image.fill((0, 255, 0))        # Green rectangle
+        self.rect = self.image.get_rect()
+        self.rect.center = (400, 500)        # Start position
+        self.speed = 5
 
-# Create and use the controllable turtle
-my_turtle = ControllableTurtle()
-print("Use arrow keys to move, spacebar to change colors!")
-my_turtle.screen.exitonclick()
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.rect.x -= self.speed
+        if keys[pygame.K_RIGHT]:
+            self.rect.x += self.speed
+        if keys[pygame.K_UP]:
+            self.rect.y -= self.speed
+        if keys[pygame.K_DOWN]:
+            self.rect.y += self.speed
+
+        # Keep on screen
+        self.rect.clamp_ip(screen.get_rect())
 ```
 
-**Output:**
-```
-Use arrow keys to move, spacebar to change colors!
-Color changed to blue!
-Color changed to green!
-# (Output appears as you press keys)
-```
+Every sprite has two essential attributes: **`self.image`** (what it looks like) and **`self.rect`** (its position and size as a rectangle).
 
-## Displaying Text with Turtle
+### The `rect` Object
 
-Sometimes you want to add text to your drawings to create labels, titles, or messages. Turtle makes this easy with the `write()` method:
+The `rect` attribute is a `pygame.Rect` that stores the sprite's position and size. It has many useful properties:
 
 ```python
-import turtle
-
-# Create turtle and set up screen
-writer = turtle.Turtle()
-screen = turtle.Screen()
-screen.bgcolor("lightgreen")
-
-# Hide the turtle shape (we just want text)
-writer.hideturtle()
-
-# Write text at different positions
-writer.goto(-200, 200)
-writer.write("Welcome to Turtle Graphics!", font=("Arial", 24, "bold"))
-
-writer.goto(-150, 150)
-writer.color("blue")
-writer.write("This is blue text", font=("Times", 16, "normal"))
-
-writer.goto(-100, 100)
-writer.color("red")
-writer.write("RED ALERT!", font=("Courier", 20, "bold"))
-
-# Move and write with different alignments
-writer.goto(0, 0)
-writer.color("purple")
-writer.write("Centered text", align="center", font=("Arial", 14, "italic"))
-
-writer.goto(100, -50)
-writer.color("darkgreen")
-writer.write("Right aligned", align="right", font=("Arial", 12, "normal"))
-
-screen.exitonclick()
+spaceship.rect.x              # Left edge
+spaceship.rect.y              # Top edge
+spaceship.rect.center         # (x, y) of center
+spaceship.rect.width          # Width in pixels
+spaceship.rect.bottom         # Bottom edge
+spaceship.rect.right          # Right edge
 ```
 
-**Output:**
-```
-# This creates a window with various text examples:
-# - Large bold title at the top
-# - Blue text in Times font
-# - Red alert message in Courier font
-# - Purple centered text
-# - Dark green right-aligned text
-```
+### Sprite Groups
 
-The `write()` method has several useful options:
-- `font=("FontName", size, "style")` - Controls text appearance
-- `align="left"/"center"/"right"` - Controls text alignment
-- `move=True/False` - Whether turtle moves after writing (default False)
-
-You can also create interactive text that changes based on user input:
+**Sprite groups** hold multiple sprites and let you update and draw them all at once:
 
 ```python
-import turtle
+all_sprites = pygame.sprite.Group()
+enemies = pygame.sprite.Group()
 
-class TextDisplay:
-    def __init__(self):
-        self.screen = turtle.Screen()
-        self.screen.setup(600, 400)
-        self.screen.bgcolor("white")
-        
-        self.writer = turtle.Turtle()
-        self.writer.hideturtle()
-        self.writer.speed(0)
-        
-        self.score = 0
-        self.update_display()
-        
-        # Set up key bindings
-        self.screen.onkey(self.increase_score, "Up")
-        self.screen.onkey(self.decrease_score, "Down")
-        self.screen.listen()
-    
-    def update_display(self):
-        self.writer.clear()  # Clear previous text
-        self.writer.goto(0, 100)
-        self.writer.write(f"Score: {self.score}", align="center", 
-                         font=("Arial", 36, "bold"))
-        
-        self.writer.goto(0, 50)
-        self.writer.write("Use UP/DOWN arrows to change score", 
-                         align="center", font=("Arial", 14, "normal"))
-    
-    def increase_score(self):
-        self.score += 10
-        self.update_display()
-    
-    def decrease_score(self):
-        self.score -= 5
-        self.update_display()
+spaceship = Spaceship()
+all_sprites.add(spaceship)
 
-# Create interactive text display
-game = TextDisplay()
-game.screen.exitonclick()
+# In the game loop:
+all_sprites.update()           # Calls update() on every sprite
+all_sprites.draw(screen)       # Draws every sprite to the screen
 ```
 
-**Output:**
-```
-Score: 0
-Use UP/DOWN arrows to change score
-# Score changes as you press arrow keys!
-```
+## Drawing and Blitting
 
-## Understanding Keyboard Input in Turtle
-
-Turtle can respond to keyboard input, making your programs interactive! Here's how keyboard input works:
+**Drawing** creates shapes directly on the screen:
 
 ```python
-import turtle
-
-# Set up turtle and screen
-my_turtle = turtle.Turtle()
-screen = turtle.Screen()
-screen.setup(400, 300)
-
-# Functions to control the turtle
-def move_up():
-    my_turtle.setheading(90)    # Point up
-    my_turtle.forward(20)
-
-def move_down():
-    my_turtle.setheading(270)   # Point down  
-    my_turtle.forward(20)
-
-def draw_circle():
-    my_turtle.circle(25)
-
-def change_color():
-    my_turtle.color("red")
-
-# Connect keys to functions
-screen.onkey(move_up, "Up")      # Arrow key
-screen.onkey(move_down, "Down")  # Arrow key
-screen.onkey(draw_circle, "c")   # Letter key (lowercase!)
-screen.onkey(change_color, "space")  # Space bar
-
-# Start listening for key presses
-screen.listen()  # This is very important!
-
-print("Use arrow keys to move, 'c' for circle, space for red color")
-screen.exitonclick()
+pygame.draw.circle(screen, (255, 255, 0), (100, 100), 30)         # Yellow circle
+pygame.draw.rect(screen, (255, 0, 0), (200, 200, 40, 60))         # Red rectangle
+pygame.draw.line(screen, (255, 255, 255), (0, 0), (800, 600), 2)  # White line
 ```
 
-**Output:**
-```
-Use arrow keys to move, 'c' for circle, space for red color
-# Turtle responds when you press the keys!
-```
-
-**Key Rules for Keyboard Input:**
-- Call `screen.listen()` to start receiving key presses
-- Use lowercase for letter keys: "a", "b", "c" (not "A", "B", "C")
-- Arrow keys: "Up", "Down", "Left", "Right"
-- Special keys: "space", "Return" (Enter), "Delete"
-- Click the turtle window to make it active for keyboard input
-
-## Creating Art with Turtle
-
-Let's combine everything we've learned to create a beautiful spiral pattern:
+**Blitting** copies an image onto the screen:
 
 ```python
-import turtle
+spaceship_img = pygame.image.load("spaceship.png")
+screen.blit(spaceship_img, (400, 500))
+```
+
+## Collision Detection
+
+Collision detection tells you when two objects touch — essential for any game. Pygame makes this easy with sprite groups:
+
+```python
+import pygame
 import random
 
-class SpiralArtist:
+class Asteroid(pygame.sprite.Sprite):
     def __init__(self):
-        self.turtle = turtle.Turtle()
-        self.screen = turtle.Screen()
-        self.screen.bgcolor("black")
-        self.screen.setup(800, 800)
-        self.turtle.speed(0)  # Fastest speed
-        
-        self.colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "cyan"]
-    
-    def draw_colorful_spiral(self):
-        for i in range(200):
-            # Pick a random color
-            color = random.choice(self.colors)
-            self.turtle.color(color)
-            
-            # Draw and turn
-            self.turtle.forward(i * 2)
-            self.turtle.right(91)  # Slightly more than 90 degrees creates spiral
-    
-    def draw_rainbow_flower(self, petals=12):
-        for i in range(petals):
-            # Use different colors for each petal
-            color = self.colors[i % len(self.colors)]
-            self.turtle.color(color)
-            
-            # Draw petal
-            self.turtle.circle(100)
-            self.turtle.right(360 / petals)
+        super().__init__()
+        self.image = pygame.Surface((20, 20))
+        self.image.fill((150, 75, 0))     # Brown
+        self.rect = self.image.get_rect()
+        self.rect.x = random.randint(0, 780)
+        self.rect.y = random.randint(-100, -10)
+        self.speed = random.randint(2, 6)
 
-# Create spiral art
-artist = SpiralArtist()
-print("Creating colorful spiral art...")
-artist.draw_colorful_spiral()
-
-# Reset position for flower
-artist.turtle.home()
-artist.turtle.clear()
-
-print("Creating rainbow flower...")
-artist.draw_rainbow_flower()
-
-artist.screen.exitonclick()
+    def update(self):
+        self.rect.y += self.speed
+        if self.rect.top > 600:           # Fell off the bottom
+            self.rect.y = random.randint(-100, -10)
+            self.rect.x = random.randint(0, 780)
 ```
 
-**Output:**
+To check if the spaceship hits any asteroid:
+
+```python
+# Check collisions between one sprite and a group
+hits = pygame.sprite.spritecollide(spaceship, asteroids, True)
+# True means: remove the asteroid from the group when hit
+
+if hits:
+    print(f"Hit {len(hits)} asteroid(s)!")
 ```
-Creating colorful spiral art...
-Creating rainbow flower...
+
+You can also check collisions between two individual rects:
+
+```python
+if spaceship.rect.colliderect(asteroid.rect):
+    print("Collision!")
 ```
 
-Turtle graphics provide an excellent bridge between basic programming concepts and visual creativity. You can see your code come to life as colorful drawings, making it perfect for understanding how programming instructions translate into visual results.
+## Displaying Text
 
-The turtle library demonstrates many OOP concepts we've learned:
-- Each turtle is an **object** with its own state (position, color, direction) as explained in Chapter 3
-- Turtle methods like `forward()`, `color()`, and `circle()` are **instance methods** as covered in Chapter 2
-- We can create custom turtle classes that **inherit** from or use turtle objects, applying inheritance concepts from Chapter 4
-- Different turtle objects can have different behaviors (**polymorphism**) as demonstrated in Chapter 4
+Pygame uses **fonts** to render text as images, then blits them to the screen:
 
-This foundation in turtle graphics prepares you perfectly for the more advanced game development concepts we'll explore with Pygame in Chapter 7!
+```python
+font = pygame.font.Font(None, 36)      # Default font, size 36
+text_surface = font.render("Score: 100", True, (255, 255, 255))
+screen.blit(text_surface, (10, 10))
+```
+
+To center text:
+
+```python
+text_surface = font.render("GAME OVER", True, (255, 0, 0))
+text_rect = text_surface.get_rect(center=(400, 300))
+screen.blit(text_surface, text_rect)
+```
+
+## Keyboard Input
+
+Pygame handles keyboard input in two ways:
+
+**Events** — for single key presses (fires once per press):
+
+```python
+for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE:
+            print("Fire!")
+```
+
+**Continuous** — for held-down keys (checked every frame):
+
+```python
+keys = pygame.key.get_pressed()
+if keys[pygame.K_LEFT]:
+    ship_x -= 5
+if keys[pygame.K_RIGHT]:
+    ship_x += 5
+```
+
+Use events for actions like shooting or pausing, and continuous input for smooth movement. Unlike Turtle, Pygame doesn't need `listen()` — input handling is built into the game loop.
+
+## Putting It All Together
+
+Here's a mini space game that combines sprites, collision detection, text, and input:
+
+```python
+import pygame
+import random
+
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Space Dodge!")
+clock = pygame.time.Clock()
+font = pygame.font.Font(None, 36)
+
+class Ship(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((40, 30))
+        self.image.fill((0, 255, 0))
+        self.rect = self.image.get_rect(center=(400, 550))
+
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.rect.x -= 5
+        if keys[pygame.K_RIGHT]:
+            self.rect.x += 5
+        self.rect.clamp_ip(screen.get_rect())
+
+class Rock(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.Surface((20, 20))
+        self.image.fill((150, 75, 0))
+        self.rect = self.image.get_rect()
+        self.reset()
+
+    def reset(self):
+        self.rect.x = random.randint(0, 780)
+        self.rect.y = random.randint(-200, -20)
+        self.speed = random.randint(3, 7)
+
+    def update(self):
+        self.rect.y += self.speed
+        if self.rect.top > 600:
+            self.reset()
+
+# Create sprites
+ship = Ship()
+all_sprites = pygame.sprite.Group(ship)
+rocks = pygame.sprite.Group()
+for i in range(8):
+    rock = Rock()
+    all_sprites.add(rock)
+    rocks.add(rock)
+
+score = 0
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    all_sprites.update()
+    score += 1
+
+    # Check collisions
+    if pygame.sprite.spritecollide(ship, rocks, False):
+        running = False  # Game over!
+
+    # Draw
+    screen.fill((0, 0, 30))
+    all_sprites.draw(screen)
+    text = font.render(f"Score: {score}", True, (255, 255, 255))
+    screen.blit(text, (10, 10))
+    pygame.display.flip()
+    clock.tick(60)
+
+# Game over screen
+screen.fill((0, 0, 0))
+game_over_text = font.render(f"Game Over! Final Score: {score}", True, (255, 0, 0))
+text_rect = game_over_text.get_rect(center=(400, 300))
+screen.blit(game_over_text, text_rect)
+pygame.display.flip()
+pygame.time.wait(3000)
+pygame.quit()
+```
+
+This game demonstrates nearly every OOP concept from this guide: **classes** (Ship, Rock), **inheritance** (from `pygame.sprite.Sprite`), **polymorphism** (each sprite's `update()` behaves differently), **encapsulation** (each sprite manages its own state), and **abstraction** (you call `all_sprites.update()` without worrying about the details).
+
+Try it yourself! Add a `Bullet` class that the ship fires when the player presses the spacebar. Check for collisions between bullets and rocks to let the player destroy them.
 
 ---
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 5 - Import and Modules](chapter-05.md)**
+⬅️ **[Previous: Chapter 5 - Turtle Graphics](chapter-05.md)**
 
 ⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 7 - Pygame Development](chapter-07.md)**
+🎉 **You've completed the Python OOP Guide!**

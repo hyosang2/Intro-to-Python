@@ -1,151 +1,216 @@
 ---
 layout: default
-title: Chapter 7 - More Tips for Python
+title: Chapter 7 - Tuples, Dictionaries, and Sets
 ---
 
-# Chapter 7: More Tips for Python
+# Chapter 7: Tuples, Dictionaries, and Sets
 
-## More Built-in Functions
+Beyond strings and lists, Python has three more collection types that are useful in different situations.
 
-We have learned about "freelance" built-in functions like `print()` and `range()`. Below are more essential built-in functions for Python programming.
+## Tuples
 
-### `input()`
-
-`input()` allows the user to insert a piece of text as input to the program, which is perceived as a string. It is helpful for building programs that need user interaction. It takes one string argument to be displayed as an instruction for the user, where the user input is formed in the same line as the instruction.
+A **tuple** is similar to a list, but it's **immutable** — once you create it, you can't change its items or length. Tuples use parentheses `()` instead of square brackets `[]`.
 
 ```python
-user_input = input("Type your name: ")
-print("Hello, " + user_input + "!")
+my_tuple = (0, 0)
+print(my_tuple)
+print(my_tuple[0])  # Indexing works the same as lists
+
+my_tuple = (0, 1)   # You can reassign the whole tuple...
+print(my_tuple)
+
+my_tuple[0] = 1     # ...but you can't change individual items!
 ```
 
 **Output:**
 ```
-Type your name: Gary
-Hello, Gary!
+(0, 0)
+0
+(0, 1)
+TypeError: 'tuple' object does not support item assignment
 ```
 
-Note that "Gary" is typed by the user while running the code.
+When should you use a tuple instead of a list? Tuples are great for data that shouldn't change, like a pair of coordinates `(x, y)` or a date `(year, month, day)`. They also use slightly less memory than lists.
 
-## Libraries
-
-**Libraries** offer functions and classes (object-oriented programming will be covered in the next guide) to simplify coding. However, to utilize these tools, the relevant library must be **imported**. For most cases, the import statements are placed at the beginning of the file to enable the subsequent lines of the file to access the library.
+You can loop through tuples and use indexing/slicing just like lists:
 
 ```python
-import <library_name>
-...
-<library_name>.<function_name>()
+colors = ("red", "green", "blue")
+for color in colors:
+    print(color)
+
+print(colors[1:])  # ('green', 'blue')
 ```
 
-where `<library_name>` is replaced by the name of the library that contains the desired function.
+## Dictionaries
 
-This guide introduces three Python libraries, emphasizing the use of their imported functions and other properties. However, please note that the listed library properties are not exhaustive, so it's recommended to explore other methods available within the libraries for further learning.
-
-### `random`
-
-`random` library offers tools for actions that relate to random selections. Below are a few examples of functions from `random`:
-
-- **`random.randint(start: int, end: int)`** returns an integer randomly selected from the range between the `start` and `end`, inclusive.
-- **`random.choice(list: List)`** returns an element randomly selected from `list`. This method works on tuples, but for dictionaries, `keys()`, `values()`, or `items()` should be used to convert into iterable sequences before using the method.
+A **dictionary** stores data as **key-value pairs**. Instead of accessing items by their position number (index), you access them by a unique **key**. Think of it like a real dictionary: you look up a word (the key) to find its definition (the value).
 
 ```python
-import random
+scores = {"Andrew": 8, "Brian": 5, "Charlie": 10}
 
-print(random.randint(1, 10))
+# Access a value using its key
+print(scores["Brian"])  # 5
 
-my_list = ["a", "c", "e"]
-print(random.choice(my_list))
+# Change a value
+scores["Brian"] = 9
+print(scores["Brian"])  # 9
 ```
 
 **Output:**
 ```
-1
-a
+5
+9
 ```
 
-where each rerun of above will result in different outputs.
+Dictionaries use curly braces `{}` with key-value pairs separated by colons `:`.
 
-### `math`
+Since **Python 3.7+**, dictionaries maintain the order in which items were added. However, unlike lists, you access items by key rather than by integer index.
 
-`math` library has tools that do mathematical operations that can't be done with Python's built-in methods. Below are a few examples of functions and constants from `math`:
+### Keys and Values
 
-- **`math.sqrt(num: int/float)`** returns the square root of `num` in float.
-- **`math.inf`** is a float constant representing infinity.
-- **`math.pi`** returns the float constant of π.
+The keys of a dictionary must be **immutable** types (strings, numbers, tuples) and must be **unique**. Values can be any type.
 
 ```python
-import math
+my_dict = {"David": 9,
+           8: ["Hello", "Hi"],
+           (1, 2): 2.4}
 
-print(math.sqrt(16))
-print(math.sqrt(10.6))
+print(my_dict[(1, 2)])  # 2.4
+```
 
-print(math.inf)
-if math.inf > 1e32:
-    print("Greater")
+### Looping Through Dictionaries
 
-print(math.pi)
+You can loop through a dictionary's keys, values, or both:
+
+```python
+scores = {"Andrew": 8, "Brian": 5, "Charlie": 10}
+
+# Loop through keys
+for name in scores:
+    print(name)
+
+# Loop through values
+for score in scores.values():
+    print(score)
+
+# Loop through key-value pairs
+for name, score in scores.items():
+    print(f"{name}: {score}")
 ```
 
 **Output:**
 ```
-4.0
-3.255764119219941
-inf
-Greater
-3.141592653589793
+Andrew
+Brian
+Charlie
+8
+5
+10
+Andrew: 8
+Brian: 5
+Charlie: 10
 ```
 
-### `time`
-
-Python's `time` module provides tools to provide information related to time.
-
-- **`time.time()`** Returns current time in seconds in float since the epoch. In Unix systems, the epoch is set at January 1, 1970, 00:00:00 UTC.
-- **`time.ctime(time: int/float)`** Converts the seconds since epoch like the one above into the format `Day Mon DD HH:MM:SS Year`.
-- **`time.sleep(second: int/float)`** Holds the code from continuing for the set seconds.
+Note: `keys()`, `values()`, and `items()` return special view objects, not lists. If you need an actual list, wrap them with `list()`:
 
 ```python
-import time
-
-curr_time = time.time()
-print(curr_time, type(curr_time))
-
-date_time = time.ctime(curr_time)
-print(date_time, type(date_time))
-
-time.sleep(5)
-# Below code runs 5 seconds later.
-print("Hi! It's been 5 seconds!")
+key_list = list(scores.keys())
+print(key_list)  # ['Andrew', 'Brian', 'Charlie']
 ```
 
-**Output:**
+### Dictionary Built-in Functions
+
+**Adding and removing items:**
+
+```python
+scores = {"Andrew": 8, "Brian": 5, "Charlie": 10}
+
+# Add a new key-value pair
+scores["Daniel"] = 12
+print(scores)
+# {'Andrew': 8, 'Brian': 5, 'Charlie': 10, 'Daniel': 12}
+
+# Remove a key-value pair and get the value back
+removed = scores.pop("Brian")
+print(removed)  # 5
+print(scores)   # {'Andrew': 8, 'Charlie': 10, 'Daniel': 12}
 ```
-1744389965.6022182 <class 'float'>
-Fri Apr 11 16:46:05 2025 <class 'str'>
-Hi! It's been 5 seconds!
+
+**Checking if a key exists:**
+
+```python
+print("Charlie" in scores)  # True
+print("Brian" in scores)    # False
 ```
 
-## Common Mistakes Among Beginners
+Note that `in` checks for **keys**, not values.
 
-Here are some common mistakes that beginners make which lead to errors or conflicts from code reviews.
+**Safe access with `.get()`:**
 
-### Single vs Double `=`
+Sometimes you're not sure if a key exists. Using `[key]` would cause an error, but `.get(key, default)` returns the value if the key exists, or a default value if it doesn't:
 
-While both symbols have similar implications, misusing them will lead to compilation errors. My advice for understanding the differences is to remember that:
+```python
+scores = {"Andrew": 8, "Charlie": 10}
 
-- **`=`** **assigns** right-hand-side to left-hand-side. The value on the right-hand-side of `=` is saved to the variable specified on the left-hand-side.
-- **`==`** **compares** left-hand-side to right-hand-side. The compiler checks whether the represented values on the left-hand-side and right-hand-side are equal.
+print(scores.get("Andrew"))      # 8
+print(scores.get("Daniel"))      # None
+print(scores.get("Daniel", 0))   # 0 (custom default)
+```
 
-### `:` and Indentation
+**Length:** `len(my_dict)` returns the number of key-value pairs.
 
-Python, an indentation-centric programming language, differs from other languages in that its function and if-statement bodies are not enclosed in brackets that serve as markers. Instead, Python uses indentation to indicate the boundaries of these blocks. Fortunately, if you've been following the indentation pattern in other languages, you'll find a similar pattern in Python.
+## Sets
 
-Notice the `:` at the end of if-statements, else syntax, while and for-loop headers, and function headers. This marker indicates the beginning of the body, which should be encapsulated via indentation.
+A **set** is a collection where every item is **unique** — no duplicates allowed. If you add an item that's already there, nothing happens. Sets also use curly braces `{}`, but without the colon `:` that dictionaries use.
+
+```python
+my_set = {1, 2, 3, 4, 1}  # The duplicate 1 is removed
+print(my_set)              # {1, 2, 3, 4}
+
+empty_set = set()  # Use set(), not {} (which creates an empty dictionary)
+print(type(empty_set))     # <class 'set'>
+```
+
+Sets are **unordered**, so you can't access items by index. But you can loop through them and check if a value exists:
+
+```python
+my_set = {1, 2, 3, 4}
+
+for num in my_set:
+    print(num)
+
+print(2 in my_set)  # True
+print(5 in my_set)  # False
+```
+
+### Set Built-in Functions
+
+- **`.add(value)`** adds a value to the set.
+- **`.remove(value)`** removes a value (throws an error if not found).
+- **`.discard(value)`** removes a value (does nothing if not found — safer than `.remove()`).
+
+```python
+my_set = {1, 2, 3, 4}
+
+my_set.add(5)
+print(my_set)      # {1, 2, 3, 4, 5}
+
+my_set.add(3)      # Already exists — no change, no error
+print(my_set)      # {1, 2, 3, 4, 5}
+
+my_set.remove(3)
+print(my_set)      # {1, 2, 4, 5}
+```
+
+Sets also support mathematical operations like union, intersection, and difference — search "Python set operations" to learn more!
 
 ---
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 6 - Functions](chapter-06.md)**
+⬅️ **[Previous: Chapter 6 - Lists](chapter-06.md)**
 
 ⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-🎉 **You've completed the Intro to Python Guide!**
+➡️ **[Next: Chapter 8 - Functions](chapter-08.md)**

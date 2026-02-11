@@ -1,121 +1,115 @@
 ---
 layout: default
-title: Chapter 2 - Classes
+title: Chapter 2 - Classes and Objects
 ---
 
-# Chapter 2: Classes
+# Chapter 2: Classes and Objects
 
-To start using OOP, developers dive into **classes**. A class is a "blueprint" that is used to create objects.
+A **class** is a blueprint for creating objects. An **object** is a specific thing created from that blueprint. To use OOP, you first *define* a class (the blueprint), then *instantiate* objects from it (the things). This is similar to how you define a function first, then call it — but at a larger scale.
 
-Recall functions from the Intro to Python guide. To utilize a function, we first *define* it with a header that consists of a name and arguments, a body of algorithm, and a series of return-statements. Then, we call the function to actually use it.
-
-Now, the procedure of definition and utilization is seen at a much larger scope, where a class falls under the definition step.
-
-A class, like functions, starts with a header:
+A class starts with a header:
 
 ```python
-class <ClassName>:
+class ClassName:
 ```
 
-where `<ClassName>` is the name of the class. Unlike names of variables or functions, by common practice, we capitalize each word in the name and do *not* use `_` to represent the space.
+Unlike variable or function names, class names capitalize each word and do **not** use underscores. For example: `Pet`, `SpaceShip`, `GameCharacter`.
 
-In general, a class consists of *class variables, instance variables, an __init__ method, and instance methods*.
-
-## Class and Instance Variables
-
-Remember our animal simulator from Chapter 1. Each pet has different traits that can be organized into categories. For example, all pets have names, ages, and favorite foods. By organizing these traits, we can easily manage each pet in our program.
-
-**Instance variables** are unique to each object created from a class. Since a class doesn't represent a single object, instance variables can also depend on the parameters provided when creating an object. For instance, an instance variable named `favorite_food` can be defined. Then, when creating objects for pets, each pet's actual favorite food can be initialized with a specific value.
-
-**Class variables** are similar to instance variables, except that all objects created from the class share the same value. It is also known as **static variables** in other languages.
-
-One way to distinguish between instance and class variables is to observe the presence of the `self` tag in front of the variable name, assuming that the variable is within the scope of a class. If the `self` syntax is included in a variable or function, it means that such will be **unique to each object**.
+A class can contain **variables** (data) and **methods** (functions that belong to the class). Let's build one up piece by piece.
 
 ## The `__init__()` Method
 
-An `__init__()` method, also known as the **constructor**, is a function that is run when an affiliated object is *initialized*. In general, `__init__()` methods take optional arguments for the object creation and assign them into the corresponding instance variables. For some cases, such arguments are taken in as a dependent for actions taken when creating an object. A class should have exactly one `__init__()` method.
-
-The format to define an `__init__()` method is the following:
+The **`__init__()`** method (also called the **constructor**) is a special function that runs automatically when you create a new object from a class. It sets up the object's starting data. A class should have exactly one `__init__()` method.
 
 ```python
-def __init__(self, <arguments>):
+def __init__(self, name, age):
 ```
 
-where `<arguments>` are replaced with the actual arguments.
+The first parameter, **`self`**, refers to the specific object being created. Python fills it in automatically — you never pass it yourself. The remaining parameters (`name`, `age`) are values you provide when creating the object.
 
-The `self` argument, like the `self` tag for instance variables, implies unique execution of the `__init__()` method for each object creation. When taking object creation parameters, the first parameter matches the *second* argument of the `__init__()` method, ignoring the `self` argument.
+## Instance Variables
 
-Now, let's create a `Pet` class that will be used to create our virtual pets as objects.
+**Instance variables** are data that belong to a specific object. Each object gets its own copy. You create them inside `__init__()` using the `self.` prefix:
 
 ```python
 class Pet:
-    # Like if-statements, while- or for-loops, the class header that ends with a ":" is followed with the body which are indented.
-    
-    pet_count = 0
-    
     def __init__(self, name, age, animal_type, favorite_food):
         self.name = name
         self.age = age
         self.animal_type = animal_type
         self.favorite_food = favorite_food
+        print(f"{self.name} is a {self.age} year old {self.animal_type} who loves {self.favorite_food}!")
+```
+
+Here, `self.name`, `self.age`, `self.animal_type`, and `self.favorite_food` are all instance variables. When you create different Pet objects, each one will have its own values for these variables.
+
+## Class Variables
+
+**Class variables** are shared by *all* objects created from the class. They're defined outside of any method, directly inside the class body.
+
+```python
+class Pet:
+    pet_count = 0  # Class variable — shared by all Pet objects
+
+    def __init__(self, name, age, animal_type, favorite_food):
+        self.name = name                # Instance variable — unique to each Pet
+        self.age = age
+        self.animal_type = animal_type
+        self.favorite_food = favorite_food
 
         print(f"{self.name} is a {self.age} year old {self.animal_type} who loves {self.favorite_food}!")
+        Pet.pet_count += 1              # Update the shared count
+```
 
-        Pet.pet_count += 1
+Notice the difference: instance variables use **`self.`** (unique to each object), while class variables use the **class name** as a prefix (e.g., `Pet.pet_count`).
 
-# Since the code below is at the same indentation level as the class header, it is now outside the scope of the class.
+## Creating Objects (Instantiation)
+
+To create an object, call the class name like a function, passing the values that `__init__()` expects (minus `self`):
+
+```python
 buddy = Pet("Buddy", 3, "dog", "chicken")
+whiskers = Pet("Whiskers", 5, "cat", "tuna")
+
 print(f"Total pets: {Pet.pet_count}")
-print(f"Pet name: {buddy.name}, Age: {buddy.age} years old")
+print(f"{buddy.name} is {buddy.age} years old")
+print(f"{whiskers.name} is {whiskers.age} years old")
 ```
 
 **Output:**
 ```
 Buddy is a 3 year old dog who loves chicken!
-Total pets: 1
-Pet name: Buddy, Age: 3 years old
+Whiskers is a 5 year old cat who loves tuna!
+Total pets: 2
+Buddy is 3 years old
+Whiskers is 5 years old
 ```
 
-Here, the `Pet` class is created, and the `__init__()` method does the following:
+Creating an object is formally called **instantiation** — you're creating an *instance* of the class. Each instance has its own copy of the instance variables but shares the class variable `pet_count`.
 
-1. It accepts `name`, `age`, `animal_type`, and `favorite_food` as parameters and sets each into instance variables.
-
-2. Next, a print statement prints what kind of new pet is created.
-
-3. Outside `__init__()` method, a class variable `pet_count` is initialized to 0, and the `__init__()` method updates the `pet_count` for each creation of `Pet` object.
-
-To avoid misrepresentations, class variables are defined outside the scope of `__init__()` method, whereas instance variables are defined inside.
-
-Creating an object of `Pet` class named `buddy` at line 17 executes the `__init__()` method. Then, lines 18 and 19 print the class and instance variables of `buddy`, respectively. Notice that, being outside the scope of the class, the class variables have the tag that is the name of the **class**, and instance variables have the tag of the **object** name.
+Outside the class, you access instance variables with the **object name** (e.g., `buddy.name`) and class variables with the **class name** (e.g., `Pet.pet_count`).
 
 ## Instance Methods
 
-**Instance methods** are functions that are unique to each object created from a class, just like instance variables. In general, such uniqueness depend on the instance variables of the same object.
-
-In our pet simulator example, while instance variables represent the **characteristics** of each pet, instance methods will represent the **behaviors** of each pet.
-
-The function header of an instance method is defined as following:
+**Instance methods** are functions defined inside a class that operate on a specific object. They always take `self` as their first parameter, which gives them access to that object's instance variables. While instance variables represent the **characteristics** of an object, instance methods represent its **behaviors**.
 
 ```python
-def <fn_name>(self, <arguments>...):
-```
-
-where `<fn_name>` represents the function name, and `<arguments>...` denotes the sequence of arguments. Like instance variables and the `__init__()` method, the `self` tag indicates that these methods are exclusive to each object and is disregarded when comparing parameters from function calls.
-
-Let's look at an example of instance method. Assume that the same variables and the `__init__()` method from last example were used.
-
-```python
-import random   # See Intro to Python guide
-
 class Pet:
-    # Class and instance variables and __init__() method placed here
+    pet_count = 0
+
+    def __init__(self, name, age, animal_type, favorite_food):
+        self.name = name
+        self.age = age
+        self.animal_type = animal_type
+        self.favorite_food = favorite_food
+        Pet.pet_count += 1
 
     def play(self):
         if self.age < 5:
             print(f"{self.name} is playing happily!")
         else:
             print(f"{self.name} is taking a nap.")
-    
+
     def eat(self, food):
         if food == self.favorite_food:
             print(f"{self.name} loves eating {food}!")
@@ -130,36 +124,95 @@ buddy.eat("broccoli")
 
 **Output:**
 ```
-Buddy is a 3 year old dog who loves chicken!
 Buddy is playing happily!
 Buddy loves eating chicken!
 Buddy doesn't really like broccoli.
 ```
 
-Here, we have two instance methods: `play` which doesn't take any arguments, and `eat` which takes a `food` argument. The `play` method checks the pet's age, while the `eat` method compares the given food with the pet's favorite food. These methods demonstrate how instance variables are used within instance methods to create unique behaviors for each object.
+The `play` method takes no extra parameters (just `self`), while `eat` takes a `food` parameter. Both use `self.` to access the object's own data. When you call `buddy.play()`, Python automatically passes `buddy` as `self`.
 
-## Access Tags Summary
+## The `__str__()` Method
 
-| **Scope** | **Member Type** | **Access Tag** | **Example** |
-|-----------|-----------------|----------------|-------------|
-| Inside class (outside methods) | Class variable | Class name | `MyClass.var` |
-| Inside class (outside methods) | Instance variable | Invalid | N/A |
-| Inside class (outside methods) | Instance method | Invalid | N/A |
-| Inside instance method (including __init__ method) | Class variable | Class name | `MyClass.var` |
-| Inside instance method (including __init__ method) | Instance variable | `self` | `self.var` |
-| Inside instance method (including __init__ method) | Instance method | `self` | `self.method()` |
-| Outside class | Class variable | Class name | `MyClass.var` |
-| Outside class | Instance variable | Instance name | `obj.var` |
-| Outside class | Instance method | Instance name | `obj.method()` |
+When you `print()` an object, Python doesn't know how to display it nicely by default. The special **`__str__()`** method lets you define what string should appear:
 
-*Assume `MyClass` is the name of the class, and `obj` is the name of the object created from `MyClass`.*
+```python
+class Pet:
+    def __init__(self, name, age, animal_type):
+        self.name = name
+        self.age = age
+        self.animal_type = animal_type
+
+    def __str__(self):
+        return f"{self.name} the {self.animal_type} (age {self.age})"
+
+buddy = Pet("Buddy", 3, "dog")
+print(buddy)
+```
+
+**Output:**
+```
+Buddy the dog (age 3)
+```
+
+Without `__str__()`, printing an object would show something unhelpful like `<__main__.Pet object at 0x7f...>`. Defining `__str__()` makes your objects much easier to work with and debug.
+
+## Objects as Variables
+
+Since classes act like custom data types, objects can be used anywhere variables can — including in lists, as function arguments, or as return values:
+
+```python
+class Toy:
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+
+    def play_with(self):
+        print(f"Playing with the {self.color} {self.name}!")
+
+    def __str__(self):
+        return f"{self.color} {self.name}"
+
+# Create toy objects and put them in a list
+teddy = Toy("teddy bear", "brown")
+ball = Toy("ball", "red")
+robot = Toy("robot", "blue")
+
+toy_box = [teddy, ball, robot]
+
+# Loop through the list and call methods on each object
+for toy in toy_box:
+    toy.play_with()
+
+print(f"I have {len(toy_box)} toys: {', '.join(str(t) for t in toy_box)}")
+```
+
+**Output:**
+```
+Playing with the brown teddy bear!
+Playing with the red ball!
+Playing with the blue robot!
+I have 3 toys: brown teddy bear, red ball, blue robot
+```
+
+Understanding that objects are just like variables is key to using OOP effectively. You'll see this idea everywhere in the Turtle and Pygame chapters.
+
+## Access Reference
+
+Here's a quick reference for how to access class members from different places:
+
+| **Where you are** | **Class variable** | **Instance variable** | **Instance method** |
+|---|---|---|---|
+| Inside an instance method | `ClassName.var` | `self.var` | `self.method()` |
+| Outside the class | `ClassName.var` | `object_name.var` | `object_name.method()` |
+
+Try it yourself! Create a `Student` class with a name, grade, and a method `introduce()` that prints a greeting. Then create three students and store them in a list.
 
 ---
 
 ## Navigation
 
-⬅️ **[Previous: Chapter 1 - OOP Introduction](chapter-01.md)**
+⬅️ **[Previous: Chapter 1 - Introduction to OOP](chapter-01.md)**
 
 ⬅️ **[Back to Table of Contents](table-of-contents.md)**
 
-➡️ **[Next: Chapter 3 - Objects](chapter-03.md)**
+➡️ **[Next: Chapter 3 - OOP Principles](chapter-03.md)**

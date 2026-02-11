@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Chapter 3 - If-Else Statements
+title: Chapter 3 - If/Elif/Else Statements
 ---
 
-# Chapter 3: If-Else Statements
+# Chapter 3: If/Elif/Else Statements
 
-Most logics in Python consist of **if-statements**. To create an if-statement, we do the following steps:
+Most decision-making in Python uses **if-statements**. It's like the "if-then-else" block in Scratch. To create an if-statement, follow these steps:
 
-1. Insert an **`if`** keyword
-2. Define the **condition** to satisfy
-3. Insert the **body**
+1. Write the **`if`** keyword
+2. Define the **condition** to check
+3. Write the **body** — the code that runs if the condition is true
 
-The bodies are defined by **indenting** a block of lines. These lines are executed only if the condition defined in the if-statement is *true*. A condition being true means that the condition can be *simplified into the value `True`* (recall the Boolean values).
+The body is defined by **indenting** a block of lines (usually 4 spaces). These lines only run if the condition is true. A condition is true when it simplifies to the Boolean value `True`.
 
-By using the optional **`else`** keyword, we can define another body to be executed only if the condition is *false* (the condition *simplifies into the value `False`*).
+By adding the optional **`else`** keyword, you can define a second body that runs only if the condition is false.
 
 ```python
 x = 3
@@ -29,11 +29,11 @@ else:  # In other words, x <= y.
 x is less than or equal to y.
 ```
 
-If above code is run, it will print `x is less than or equal to y.` because the condition `x > y` evaluates to false.
+This prints `x is less than or equal to y.` because the condition `x > y` evaluates to `False`.
 
 ## Elif Statements
 
-By using the optional **`elif`** keyword (`elif` stands for "else if"), we can define a second condition to check if the preceding condition is not satisfied.
+The optional **`elif`** keyword (short for "else if") lets you check a second condition when the first one is not satisfied:
 
 ```python
 x = 7
@@ -51,30 +51,30 @@ else:  # In other words, x == y.
 x is greater than y.
 ```
 
-Note that if the previous condition is met, the compiler will **ignore the conditions and bodies in the subsequent `elif`- and `else`-statements**.
+Once a condition is met, Python will **skip all the remaining `elif` and `else` branches** below it. You can chain as many `elif` branches as you need.
 
-## Inequality Operators
+## Comparison Operators
 
-These are the syntax to represent inequalities in Python:
+These are the symbols used to compare values in Python:
 
-| Python Syntax | Mathematical Meaning |
-|--------------|---------------------|
-| `x == y` | x = y |
-| `x > y` | x > y |
-| `x < y` | x < y |
-| `x >= y` | x ≥ y |
-| `x <= y` | x ≤ y |
-| `x != y` | x ≠ y |
+| Python Syntax | Meaning |
+|--------------|---------|
+| `x == y` | $x = y$ (equal to) |
+| `x != y` | $x \neq y$ (not equal to) |
+| `x > y` | $x > y$ (greater than) |
+| `x < y` | $x < y$ (less than) |
+| `x >= y` | $x \geq y$ (greater than or equal to) |
+| `x <= y` | $x \leq y$ (less than or equal to) |
 
-Note that the double equal signs (`==`) is used to express the *condition of two variables with equal values*, while the single equal sign (`=`) *assigns a value into a variable*.
+Note that the double equal sign (`==`) **compares** two values to check if they're equal, while the single equal sign (`=`) **assigns** a value to a variable. Mixing these up is a very common beginner mistake!
 
 ## Logical Operators: `and`, `or`, `not`
 
-We can create *compound conditions* with a mix of `and`, `or`, and `not` syntax.
+You can combine conditions using `and`, `or`, and `not` to create **compound conditions**:
 
-- `a and b` outputs true if **both** conditions `a` and `b` are true.
-- `a or b` outputs true if **at least one** condition of `a` or `b` is true.
-- `not a` outputs true if `a` is **not** true.
+- `a and b` is true if **both** `a` and `b` are true.
+- `a or b` is true if **at least one** of `a` or `b` is true.
+- `not a` is true if `a` is false (it flips the result).
 
 ```python
 age = 20
@@ -85,7 +85,7 @@ if age >= 18 and has_drivers_license:
 is_student = True
 is_employed = False
 if is_student or is_employed:
-    print("You can get discount.")
+    print("You can get a discount.")
 
 is_hungry = False
 if not is_hungry:
@@ -95,15 +95,15 @@ if not is_hungry:
 **Output:**
 ```
 You can drive.
-You can get discount.
+You can get a discount.
 You are full.
 ```
 
-The **order of operations matter** in compound condition. That is, `not` is operated first, then `and` and `or` in order. Parentheses can be used to change the order. To familiarize with this, consider practicing to build **truth tables** with given compound conditions.
+When mixing operators, `not` is evaluated first, then `and`, then `or`. Parentheses can be used to change the order, just like in math. To practice this, try building **truth tables** for compound conditions.
 
 ## Nested If-Statements
 
-Suppose condition `a` is true, and one wants to build a consequential action that depends on whether condition `b` is true or false. That's when the nested if-statement comes in. A series of if-statements can be wrapped as a followup action of an outer if-statement.
+Sometimes you need to check a second condition only after the first one passes. You can put an if-statement *inside* another if-statement — this is called **nesting**.
 
 ```python
 age = 20
@@ -125,7 +125,7 @@ else:
 You can drive under supervision.
 ```
 
-Multiple layers of if-statements are allowed.
+You can nest as many layers of if-statements as you need, but try to keep it readable. Often, compound conditions with `and`/`or` can replace deeply nested code.
 
 ---
 

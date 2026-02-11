@@ -3,7 +3,7 @@ Welcome to the comprehensive Python learning resource repository! This collectio
 ## 📚 Learning Guides
 
 ### 🌟 Intro to Python
-A comprehensive introduction to Python programming fundamentals, covering variables, data types, control structures, functions, and essential concepts for beginners.
+A comprehensive introduction to Python programming fundamentals, covering variables, data types, control structures, strings, lists, functions, and essential concepts for beginners.
 
 [📖 Table of Contents](Intro-to-Python/table-of-contents.md)
 
