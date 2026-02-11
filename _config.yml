@@ -24,6 +24,7 @@ kramdown:
 # Include markdown files in processing
 include:
   - "Intro-to-Python/*.md"
+  - "Python-OOP-Turtle-Pygame/*.md"
 
 # Set defaults for all markdown files to use the default layout
 defaults:
@@ -34,6 +35,11 @@ defaults:
       layout: "default"
   - scope:
       path: "Intro-to-Python"
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "Python-OOP-Turtle-Pygame"
       type: "pages"
     values:
       layout: "default"
