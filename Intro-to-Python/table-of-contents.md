@@ -44,4 +44,4 @@ Frequent beginner mistakes and where to go from here
 
 📄 **[Download Full PDF Guide](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/hyosang2/Intro-to-Python/main/Intro_to_Python_Review_Guide.pdf&embedded=true)**
 
-🏠 **[Back to Home](../)**
+🏠 **[Back to Home](../README.md)**

@@ -32,4 +32,4 @@ Sprites, game loops, collision detection, text, keyboard input, and a complete m
 
 📄 **[Download Full PDF Guide](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/hyosang2/Intro-to-Python/main/Object_Oriented_Programming_for_Python_with_Turtle_and_Pygame.pdf&embedded=true)**
 
-🏠 **[Back to Home](../)**
+🏠 **[Back to Home](../README.md)**
