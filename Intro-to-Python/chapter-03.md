@@ -31,7 +31,7 @@ x is less than or equal to y.
 
 This prints `x is less than or equal to y.` because the condition `x > y` evaluates to `False`.
 
-## Elif Statements
+## ⭐ Elif Statements
 
 The optional **`elif`** keyword (short for "else if") lets you check a second condition when the first one is not satisfied:
 
@@ -53,7 +53,7 @@ x is greater than y.
 
 Once a condition is met, Python will **skip all the remaining `elif` and `else` branches** below it. You can chain as many `elif` branches as you need.
 
-## Comparison Operators
+## ⭐ Comparison Operators
 
 These are the symbols used to compare values in Python:
 
@@ -68,7 +68,7 @@ These are the symbols used to compare values in Python:
 
 Note that the double equal sign (`==`) **compares** two values to check if they're equal, while the single equal sign (`=`) **assigns** a value to a variable. Mixing these up is a very common beginner mistake!
 
-## Logical Operators: `and`, `or`, `not`
+## ⭐ Logical Operators: `and`, `or`, `not`
 
 You can combine conditions using `and`, `or`, and `not` to create **compound conditions**:
 
@@ -101,7 +101,7 @@ You are full.
 
 When mixing operators, `not` is evaluated first, then `and`, then `or`. Parentheses can be used to change the order, just like in math. To practice this, try building **truth tables** for compound conditions.
 
-## Nested If-Statements
+## ⭐ Nested If-Statements
 
 Sometimes you need to check a second condition only after the first one passes. You can put an if-statement *inside* another if-statement — this is called **nesting**.
 

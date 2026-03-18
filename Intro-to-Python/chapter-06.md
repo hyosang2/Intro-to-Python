@@ -30,7 +30,7 @@ A list can contain items of different types, including other lists:
 mixed = [1, 2.4, "Coding", True, [2, 5]]
 ```
 
-## Getting and Setting Items
+## ⭐ Getting and Setting Items
 
 You can read an item (get) or change it (set) using its index:
 
@@ -47,7 +47,7 @@ print(my_list)     # [10, 99, 30]
 
 This is a key difference from strings: lists are **mutable**, meaning you can change their contents. Strings are **immutable** — you can't change a single character within a string.
 
-## Slicing and Sublists
+## ⭐ Slicing and Sublists
 
 Slicing works the same way as with strings — you can grab a portion of a list (called a **sublist**) using `[start:stop:step]`:
 
@@ -61,7 +61,7 @@ print(my_list[::-1])      # ['e', 'd', 'c', 'b', 'a']
 print(my_list[4:1:-1])    # ['e', 'd', 'c']
 ```
 
-## List Traversal
+## ⭐ List Traversal
 
 Since lists are iterable (you can loop through them), you can use a for-loop to visit each item:
 
@@ -129,11 +129,11 @@ for i, row in enumerate(grid):
 
 You can build lists with three or more dimensions by adding more nested lists, but 2D is the most common.
 
-## List Built-in Functions
+## ⭐ List Built-in Functions
 
 Here are the most commonly used functions and methods for lists:
 
-### Length
+### ⭐ Length
 
 **`len(list)`** returns the number of items in a list.
 
@@ -142,7 +142,7 @@ print(len([10, 20, 30]))  # 3
 print(len([]))             # 0
 ```
 
-### Adding Items
+### ⭐ Adding Items
 
 - **`.append(item)`** adds an item at the **end** of the list.
 - **`.insert(index, item)`** adds an item at a specific position, pushing the rest forward.
@@ -175,7 +175,7 @@ animals.remove("cat")
 print(animals)      # ['dog', 'cat', 'bird'] — only the first "cat" is removed
 ```
 
-### Searching
+### ⭐ Searching
 
 - **`value in list`** checks whether the list contains at least one item with that value.
 - **`.index(value)`** returns the index of the **first** occurrence of the value.

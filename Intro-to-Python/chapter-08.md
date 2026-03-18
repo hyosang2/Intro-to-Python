@@ -19,7 +19,7 @@ g(13, 17) = 47
 
 Python functions work the same way: they take inputs, run a consistent set of steps, and (optionally) return an output. Functions let you **reuse** code instead of writing the same thing over and over. If you've used the "My Blocks" feature in Scratch, you already know the idea — functions are custom blocks that you define once and use anywhere.
 
-## Function Structure
+## ⭐ Function Structure
 
 To create a function, you **define** it with the `def` keyword:
 
@@ -35,7 +35,7 @@ A function definition has three parts:
 2. **Body**: the indented code that runs when the function is called
 3. **Return statement**: `return value` — the output that the function sends back
 
-### Parameters and Arguments
+### ⭐ Parameters and Arguments
 
 The variables listed in the function definition are called **parameters**. The actual values you pass in when calling the function are called **arguments**.
 
@@ -63,7 +63,7 @@ def say_hi():
     print("Hi!")
 ```
 
-### Return Statement
+### ⭐ Return Statement
 
 The `return` keyword sends a value back to wherever the function was called. Once Python reaches a `return` statement, it **immediately exits** the function — any code after it is skipped.
 
@@ -86,7 +86,7 @@ smallest, largest = min_and_max(5, 2, 8)
 print(smallest, largest)  # 2 8
 ```
 
-## Calling Functions
+## ⭐ Calling Functions
 
 When you **call** a function, you write its name followed by the arguments in parentheses. The return value can be stored in a variable or used directly:
 

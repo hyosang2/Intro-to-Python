@@ -7,7 +7,7 @@ title: Chapter 4 - Loops
 
 Sometimes you want certain code to run multiple times. Maybe each cycle is slightly different, but you notice a repeating pattern. That's when you use **loops**.
 
-## While-Loops
+## ⭐ While-Loops
 
 Recall if-statements: the body runs only if the condition is true. If you replace the `if` keyword with `while`, the body will **repeat** as long as the condition stays true. It stops once the condition becomes false.
 
@@ -31,7 +31,7 @@ This code prints the value of `i`, starting at 0, adds 1 to it, and repeats unti
 
 **Think about it:** How can you make a loop that repeats forever, like the "forever" block in Scratch? Hint: what condition is *always* true?
 
-## For-Loops
+## ⭐ For-Loops
 
 Unlike while-loops that check a condition each time, for-loops **go through** a sequence of items and process one item at a time. Data that you can loop through is called **iterable** — meaning "something you can go through one item at a time." Examples include a range of numbers, the characters of a string, and lists.
 
@@ -60,7 +60,7 @@ n
 
 The first for-loop behaves the same as the while-loop example above. `range(5)` gives you the numbers 0 through 4, and `i` takes on each number in order. The second for-loop goes through each character in the string `"Python"`, one at a time.
 
-### The `range()` Function
+### ⭐ The `range()` Function
 
 `range()` gives you a sequence of numbers. It can be called in three ways:
 
@@ -161,11 +161,11 @@ for i in range(10):
 
 The first loop prints `i` up to 4 because it exits when `i` reaches 5. The second loop skips odd numbers (when `i % 2 == 1`) and only prints the even ones.
 
-## The Accumulator Pattern
+## ⭐ The Accumulator Pattern
 
 One of the most important patterns in programming is **building up a result inside a loop**. You start with an empty result (like `0` for a sum, `""` for a string, or `[]` for a list), then add to it on each cycle. This is called the **accumulator pattern**.
 
-### Accumulating a Sum
+### ⭐ Accumulating a Sum
 
 ```python
 total = 0
@@ -179,7 +179,7 @@ print(total)
 100
 ```
 
-### Building a String
+### ⭐ Building a String
 
 ```python
 result = ""
@@ -193,7 +193,7 @@ print(result)
 HHeelllloo
 ```
 
-### Building a List
+### ⭐ Building a List
 
 ```python
 evens = []

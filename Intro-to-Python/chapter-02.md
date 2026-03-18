@@ -27,7 +27,7 @@ In the code above, the `=` sign **assigns** the value on the right side to the v
 
 By convention, variable names use lowercase letters and numbers, separated by underscores (`_`). For example: `my_score`, `player_name`, `total_count`. **Names that use characters other than letters, numbers, and underscores — or that start with a number — are not allowed.**
 
-## Data Types
+## ⭐ Data Types
 
 Python has several **data types** — different kinds of values that variables can hold:
 
@@ -111,7 +111,7 @@ print(type(y))
 <class 'str'>
 ```
 
-## Operators
+## ⭐ Operators
 
 Python supports a series of math operators:
 
@@ -139,7 +139,7 @@ There are two kinds of division: `/` gives the full decimal answer (a float), wh
 
 The **modulus** operator `%` gives you the **remainder** after division. For example, `9 % 2` is `1` because 9 divided by 2 is 4 with a remainder of 1. This is very handy for checking whether a number is even or odd: if `n % 2 == 0`, the number is even.
 
-### Assignment Operator Shortcuts
+### ⭐ Assignment Operator Shortcuts
 
 If you want to update a variable using its current value, you can use shortcut operators. For example, instead of writing `x = x + y`, you can write `x += y`:
 

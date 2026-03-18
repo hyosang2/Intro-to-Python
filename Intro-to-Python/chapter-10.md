@@ -5,11 +5,11 @@ title: Chapter 10 - Common Mistakes and Next Steps
 
 # Chapter 10: Common Mistakes and Next Steps
 
-## Common Mistakes Among Beginners
+## ⭐ Common Mistakes Among Beginners
 
 Here are some of the most frequent mistakes that beginners make. Knowing about them ahead of time can save you a lot of debugging!
 
-### Single `=` vs. Double `==`
+### ⭐ Single `=` vs. Double `==`
 
 This is the most common mix-up for new programmers:
 
@@ -32,7 +32,7 @@ if x == 5:    # This works
     print("x is five")
 ```
 
-### Forgetting the `:` and Indentation
+### ⭐ Forgetting the `:` and Indentation
 
 Python uses `:` at the end of lines that start a block (if-statements, loops, functions), and **indentation** to mark what's inside that block. Forgetting either one causes an error:
 
@@ -72,7 +72,7 @@ for num in numbers:
 print(odds)  # [1, 3, 5]
 ```
 
-### Off-by-One Errors
+### ⭐ Off-by-One Errors
 
 Remember that indices start at **0**, and `range(n)` goes from 0 to `n-1` (not `n`). Slicing with `[start:end]` includes `start` but **excludes** `end`. This is the most common source of "off-by-one" bugs:
 
@@ -96,7 +96,7 @@ age = int(input("Age: "))
 print(age + 1)  # Works!
 ```
 
-### Using a Variable Before Defining It
+### ⭐ Using a Variable Before Defining It
 
 Python reads code from top to bottom. If you try to use a variable before assigning a value to it, you'll get a `NameError`:
 

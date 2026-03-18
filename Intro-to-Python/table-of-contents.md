@@ -10,6 +10,8 @@ Welcome to the comprehensive Python learning guide! This interactive table of co
 
 ## 📖 Chapters
 
+> ⭐ marks subsections covering concepts tested on [CodingBat Python](https://codingbat.com/python).
+
 ### [Chapter 1: Hello World](chapter-01.md)
 Getting started with Python, print statements, comments, and user input
 

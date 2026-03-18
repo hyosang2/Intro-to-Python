@@ -9,7 +9,7 @@ Recall from [Chapter 2](chapter-02.md) that strings are text enclosed in quotati
 
 For example, the string `"Hello"` contains five characters: `'H'` at index 0, `'e'` at index 1, `'l'` at index 2, `'l'` at index 3, and `'o'` at index 4.
 
-## String Concatenation
+## ⭐ String Concatenation
 
 Strings can be **concatenated** (joined together) using the `+` operator. If you need to include a number in a string, convert it to a string first using `str()`.
 
@@ -55,7 +55,7 @@ Next year I'll be 16.
 
 F-strings don't require `str()` conversion — you can put any expression inside the curly braces.
 
-## Indexing
+## ⭐ Indexing
 
 You can access a single character from a string using its **index** in square brackets. Remember, indexing starts at 0!
 
@@ -77,7 +77,7 @@ o
 
 **Negative indices** count from the end: `-1` is the last character, `-2` is the second to last, and so on. This is really handy when you need to grab characters from the end without knowing the string's length.
 
-## Slicing and Substrings
+## ⭐ Slicing and Substrings
 
 **Slicing** lets you grab a portion of a string. The result is called a **substring** — a string made up of some characters from another string. The general syntax is:
 
@@ -111,7 +111,7 @@ Hlowrd
 
 The trick `[::-1]` reverses any string — it's a useful pattern to remember.
 
-## String Traversal
+## ⭐ String Traversal
 
 You can loop through a string character by character:
 
@@ -144,11 +144,11 @@ Index 1: a
 Index 2: t
 ```
 
-## String Built-in Functions
+## ⭐ String Built-in Functions
 
 Here are the most commonly used string functions and methods:
 
-### Length
+### ⭐ Length
 
 **`len(string)`** returns the number of characters in a string.
 
@@ -166,7 +166,7 @@ print(my_string.upper())  # "HELLO WORLD"
 print(my_string.lower())  # "hello world"
 ```
 
-### Checking Content
+### ⭐ Checking Content
 
 - **`substring in string`** checks if a string contains another string.
 - **`.startswith(s)`** checks if the string starts with `s`.
